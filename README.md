@@ -1,5 +1,5 @@
 # iOS-MVVM
-iOS Mvvm (Alomofire5.0) Swift
+iOS Mvvm (Alamofire.0) Swift
 @Mvvm @iOS Development Architecture
 @Mobile Architecture
 
