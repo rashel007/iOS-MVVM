@@ -177,7 +177,7 @@ public protocol BaseApiRequest {
 ```
 * BaseApiRequest
     * Extension
-    
+     !! NOT: Protocol Variable Default Value
 ```Swift  
 extension BaseApiRequest{
     var enviroment: Environment {
