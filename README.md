@@ -1,7 +1,7 @@
 # iOS-MVVM
 iOS Mvvm (Alomofire) Swift 5.0
 
-# Mvvm Layer 
+# Base Mvvm Layer 
 
 * BaseViewController
 
@@ -73,6 +73,94 @@ enum BaseViewModelChange {
     case updateDataModel
     case error(message: String)
 }
+```
+
+ 
+
+# Mvvm Layer Example Using * (Important) * Using Base Mvvm Layer 
+
+* OnSaleEventViewModelProtocol
+```Swift  
+protocol OnSaleEventViewModelProtocol : BaseViewModel{
+    var events : [Event] { get set }
+}
+
+```
+
+* OnSaleEventViewModel
+
+```Swift  
+class OnSaleEventViewModel: OnSaleEventViewModelProtocol{
+    
+    var events: [Event] = [] {
+        didSet {
+          changeHandler?(.updateDataModel)
+        }
+    }
+   
+    var changeHandler: ((BaseViewModelChange) -> Void)?
+    
+    func startSynching() {
+        emit(.loaderStart)
+        self.restClient!.getEventList(successHandler: { (response) in
+            if(response.data != nil){
+                self.events = response.data!
+                self.emit(.updateDataModel)
+            }
+        }) { error in
+            self.emit(.error(message: error.asAFError.debugDescription))
+        }
+    }
+    
+    func emit(_ change: BaseViewModelChange) {
+             changeHandler?(change)
+    }
+
+}
+
+```
+
+* OnSaleEventViewController
+
+```Swift  
+import UIKit
+
+class OnSaleEventViewController:BaseViewController, BaseViewControllerProtocol {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel()
+        setupUI()
+        // Do any additional setup after loading the view.
+    }
+
+    func bindViewModel() {
+        self.viewModel = OnSaleEventViewModel()
+        self.viewModel?.changeHandler = {
+            [unowned self] change in
+            switch change {
+            case .error(let message):
+               // Error Pop-Up
+                break
+            case .loaderEnd:
+                self.removeSpinner()
+                break
+            case .loaderStart:
+                self.showSpinner(onView: self.view)
+                break
+            case .updateDataModel:
+                // BindData
+                break
+            }
+        }
+    }
+    
+    func setupUI() {
+        self.viewModel?.startSynching()
+    }
+
+}
+
 ```
 
     
