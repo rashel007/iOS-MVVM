@@ -11,8 +11,9 @@ public protocol BaseApiRequest {
     func request() -> URLRequest
 }
 ```
-
+* BaseApiRequest
     * Extension
+    
 ```Swift  
 extension BaseApiRequest{
     var enviroment: Environment {
