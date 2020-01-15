@@ -73,7 +73,6 @@ enum BaseViewModelChange {
     case updateDataModel
     case error(message: String)
 }
-}
 ```
 
     
