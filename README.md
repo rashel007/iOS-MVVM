@@ -77,7 +77,8 @@ enum BaseViewModelChange {
 
  
 
-# Mvvm Layer Example Using * (Important) * Using Base Mvvm Layer 
+# Mvvm Layer Example Using 
+# Using Base Mvvm Layer 
 
 * OnSaleEventViewModelProtocol
 ```Swift  
