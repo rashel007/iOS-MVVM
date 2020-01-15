@@ -12,7 +12,7 @@ public protocol BaseApiRequest {
 }
 ```
 
- *Extension
+    * Extension
 ```Swift  
 extension BaseApiRequest{
     var enviroment: Environment {
@@ -48,7 +48,7 @@ extension BaseApiRequest{
 }
 ```
 
- *Enums
+     * Enums
 ```Swift  
 public enum RequestHttpMethod{
     case Get
