@@ -236,6 +236,18 @@ public class GetEventListApiRequest: BaseApiRequest {
 }
 ```
 * GetEventResponse
+```Swift   
+public class GetEventResponse:Codable{
+    
+    
+    var data : [Event]?
+    
+    enum CodingKeys: String, CodingKey {
+          case data = "Data"
+    }
+ }
+``` 
+
 
  Alamofire Generic Request 
 * RestClient
