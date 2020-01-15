@@ -1,8 +1,84 @@
 # iOS-MVVM
 iOS Mvvm (Alomofire) Swift 5.0
 
+# Mvvm Layer 
 
-Network Layer
+* BaseViewController
+
+```Swift 
+import UIKit
+
+protocol BaseViewControllerProtocol {    
+    func bindViewModel()
+    func setupUI()
+}
+
+public class BaseViewController: UIViewController {
+    var viewModel: BaseViewModel?
+    var loading : UIView?
+      
+    public func showSpinner(onView : UIView) {
+        let ai = UIActivityIndicatorView.init(style: .large)
+        ai.startAnimating()
+        ai.center = onView.center
+             
+        DispatchQueue.main.async {
+            onView.addSubview(ai)
+        }
+        loading = ai
+    }
+    
+    override public func viewDidLayoutSubviews() {
+        self.loading?.center = self.view.center
+    }
+    
+    public func removeSpinner() {
+        DispatchQueue.main.async {
+            self.loading?.removeFromSuperview()
+            self.loading = nil
+        }
+    }
+    
+}
+
+```
+
+* BaseViewModel
+```Swift  
+protocol BaseViewModel {
+    func startSynching()
+    var changeHandler: ((BaseViewModelChange) -> Void)? {get set}
+    func emit(_ change: BaseViewModelChange)
+}
+```
+* BaseViewModel
+    * Extension
+```Swift  
+extension BaseViewModel{
+    var baseData :BaseData? {
+        return BaseData.sharedInstance
+    }
+    var restClient :RestClient? {
+        return RestClient.sharedInstance
+    }
+}
+```
+
+* BaseViewModel
+    * Enum    
+```Swift  
+enum BaseViewModelChange {
+    case loaderStart
+    case loaderEnd
+    case updateDataModel
+    case error(message: String)
+}
+}
+```
+
+    
+# Network Layer
+
 * BaseApiRequest
 ```Swift  
 public protocol BaseApiRequest {
