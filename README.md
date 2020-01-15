@@ -48,7 +48,7 @@ extension BaseApiRequest{
     }
 }
 ```
-
+* BaseApiRequest
      * Enums
 ```Swift  
 public enum RequestHttpMethod{
@@ -83,6 +83,15 @@ private func sendRequest<T:Codable>(_ request:BaseApiRequest,_ type :T.Type,succ
         }
     }
  ```
+ 
 * IServiceHandler
+    * Protocol
 
+```Swift   
+public protocol IServiceHandler {
+    func getEventList(successHandler:@escaping(GetEventResponse)->(),
+                      failHandler:@escaping(Error)->())
+
+}
+ ```
 
