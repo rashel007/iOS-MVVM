@@ -1,5 +1,7 @@
 # iOS-MVVM
 iOS Mvvm (Alomofire) Swift 5.0
+@Mvvm @iOS Development Architecture
+@Mobile Architecture
 
 # Base Mvvm Layer 
 
