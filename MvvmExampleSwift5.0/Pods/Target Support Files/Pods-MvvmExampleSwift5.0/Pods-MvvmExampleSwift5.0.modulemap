@@ -1,0 +1,6 @@
+module Pods_MvvmExampleSwift5_0 {
+  umbrella header "Pods-MvvmExampleSwift5.0-umbrella.h"
+
+  export *
+  module * { export * }
+}
