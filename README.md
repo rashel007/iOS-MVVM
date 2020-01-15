@@ -10,7 +10,7 @@ Network Layer
  Alamofire Generic Request 
 * RestClient
 
-**    
+```Swift   
 private func sendRequest<T:Codable>(_ request:BaseApiRequest,_ type :T.Type,successHandler:@escaping(T)->(),failHandler:@escaping(Error)->()){
         AF.request(request.request()).responseDecodable { (response:AFDataResponse<T>) in
              switch response.result{
@@ -23,7 +23,7 @@ private func sendRequest<T:Codable>(_ request:BaseApiRequest,_ type :T.Type,succ
             }
         }
     }
-**
+ ```
 * IServiceHandler
 
 
