@@ -3,6 +3,12 @@ iOS Mvvm (Alamofire 5.0) Swift
 @Mvvm @iOS Development Architecture
 @Mobile Architecture
 
+# Requirements
+
+Swift 5
+Xcode 11+
+Alamofire 5.0.0 rc3
+
 # Base Mvvm Layer 
 
 * BaseViewController
