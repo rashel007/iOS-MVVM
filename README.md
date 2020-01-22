@@ -7,7 +7,7 @@ iOS Mvvm (Alamofire 5.0) Swift
 
 * Swift 5
 * Xcode 11+
-* Alamofire 5.0.0 rc3
+* Alamofire 5.0.0 rc3 (https://github.com/Alamofire/Alamofire)
 
 # Base Mvvm Layer 
 
