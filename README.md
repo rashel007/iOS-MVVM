@@ -230,7 +230,6 @@ public enum Environment{
 
 * GetEventListApiRequest
 ```Swift   
-import Foundation
 public class GetEventListApiRequest: BaseApiRequest {    
     public var requestMethod: RequestHttpMethod?
     public var requestPath: String = "/sltf6"
