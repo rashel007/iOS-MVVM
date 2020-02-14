@@ -176,11 +176,14 @@ class OnSaleEventViewController:BaseViewController, BaseViewControllerProtocol {
 
 * BaseApiRequest
 ```Swift  
+import Alamofire
 public protocol BaseApiRequest {
     var requestMethod: RequestHttpMethod?{ get }
+    var requestBodyObject: BaseObject?{ get }
     var requestPath: String {get}
     func request() -> URLRequest
 }
+
 ```
 * BaseApiRequest
     * Extension
@@ -199,6 +202,14 @@ extension BaseApiRequest{
             break
         case .Post:
             request.httpMethod = "POST"
+            if(requestBodyObject != nil){
+                let jsonEncoder = JSONEncoder()
+                do {
+                    request.httpBody = try jsonEncoder.encode(requestBodyObject)
+                } catch  {
+                    print(error)
+                }
+            }
             break
         default:
             request.httpMethod = "GET"
@@ -206,6 +217,7 @@ extension BaseApiRequest{
         }
         return request
     }
+    
     
     var baseUrl: String {
         switch enviroment {
@@ -217,6 +229,17 @@ extension BaseApiRequest{
             return "https://api.myjson.com/"
         }
     }
+}
+
+public enum RequestHttpMethod{
+    case Get
+    case Post
+}
+
+public enum Environment{
+    case Prod
+    case Dev
+    case UAT
 }
 ```
 * BaseApiRequest
@@ -234,6 +257,19 @@ public enum Environment{
 }
 ```
 
+* PostEventApiRequest
+```Swift  
+public class PostEventApiRequest: BaseApiRequest {
+    public var requestBodyObject: BaseObject?
+    public var requestMethod: RequestHttpMethod? = RequestHttpMethod.Post
+    public var requestPath: String = "/sltf6"
+
+    func setBodyObject(bodyObject: Event) {
+        self.requestBodyObject = bodyObject
+    }
+}
+```
+
 * GetEventListApiRequest
 ```Swift   
 public class GetEventListApiRequest: BaseApiRequest {    
@@ -241,9 +277,19 @@ public class GetEventListApiRequest: BaseApiRequest {
     public var requestPath: String = "/sltf6"
 }
 ```
-* GetEventResponse
+# Model 
+
+* BaseObject
+
+path = model/
 ```Swift   
-public class GetEventResponse:Codable{
+public class BaseObject:Codable{}
+```
+* GetEventResponse
+
+path = model/response
+```Swift   
+public class GetEventResponse:BaseObject{
     
     
     var data : [Event]?
@@ -252,6 +298,22 @@ public class GetEventResponse:Codable{
           case data = "Data"
     }
  }
+``` 
+
+* Event
+
+ path = model/data
+
+```Swift
+public class Event: BaseObject {
+    var categoryName:String!
+    var cityName:String!
+     enum CodingKeys: String, CodingKey {
+        case categoryName = "CategoryName"
+        case cityName = "CityName"
+    }
+}
+
 ``` 
 
 
@@ -280,7 +342,7 @@ private func sendRequest<T:Codable>(_ request:BaseApiRequest,_ type :T.Type,succ
 public protocol IServiceHandler {
     func getEventList(successHandler:@escaping(GetEventResponse)->(),
                       failHandler:@escaping(Error)->())
-
+     
+    func postEvent(event:Event,successHandler: @escaping (GetEventResponse) -> (), failHandler: @escaping (Error) -> ())
 }
  ```
-
