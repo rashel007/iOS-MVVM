@@ -30,6 +30,8 @@
 		171C289623CEFF5100FA77DC /* InComingEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C288723CEFF5100FA77DC /* InComingEventViewController.swift */; };
 		171C289723CEFF5100FA77DC /* InComingEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C288823CEFF5100FA77DC /* InComingEventViewModel.swift */; };
 		171C289823CEFF5100FA77DC /* InComingEventModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C288923CEFF5100FA77DC /* InComingEventModelProtocol.swift */; };
+		176BC30423F6C57600EFCC5D /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176BC30323F6C57600EFCC5D /* BaseObject.swift */; };
+		176BC30623F6C5D600EFCC5D /* PostEventApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176BC30523F6C5D600EFCC5D /* PostEventApiRequest.swift */; };
 		7FBB8F03E38ACFFB48EBEBC2 /* libPods-MvvmExampleSwift5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D5E54DA33B99296E2BCFB0 /* libPods-MvvmExampleSwift5.0.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		171C288723CEFF5100FA77DC /* InComingEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InComingEventViewController.swift; sourceTree = "<group>"; };
 		171C288823CEFF5100FA77DC /* InComingEventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InComingEventViewModel.swift; sourceTree = "<group>"; };
 		171C288923CEFF5100FA77DC /* InComingEventModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InComingEventModelProtocol.swift; sourceTree = "<group>"; };
+		176BC30323F6C57600EFCC5D /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
+		176BC30523F6C5D600EFCC5D /* PostEventApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEventApiRequest.swift; sourceTree = "<group>"; };
 		1932B3C5A1591CC6D304EA00 /* Pods-MvvmExampleSwift5.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MvvmExampleSwift5.0.debug.xcconfig"; path = "Target Support Files/Pods-MvvmExampleSwift5.0/Pods-MvvmExampleSwift5.0.debug.xcconfig"; sourceTree = "<group>"; };
 		38BA2891D0E819E51B847CC9 /* Pods-MvvmExampleSwift5.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MvvmExampleSwift5.0.release.xcconfig"; path = "Target Support Files/Pods-MvvmExampleSwift5.0/Pods-MvvmExampleSwift5.0.release.xcconfig"; sourceTree = "<group>"; };
 		F5D5E54DA33B99296E2BCFB0 /* libPods-MvvmExampleSwift5.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MvvmExampleSwift5.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,7 @@
 		171C287323CEFF5000FA77DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				176BC30323F6C57600EFCC5D /* BaseObject.swift */,
 				171C287423CEFF5000FA77DC /* Response */,
 				171C287623CEFF5000FA77DC /* Model */,
 				171C287823CEFF5000FA77DC /* Request */,
@@ -211,6 +216,7 @@
 			children = (
 				171C287923CEFF5000FA77DC /* GetEventListApiRequest.swift */,
 				171C287A23CEFF5000FA77DC /* BaseApiRequest.swift */,
+				176BC30523F6C5D600EFCC5D /* PostEventApiRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -458,12 +464,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				176BC30423F6C57600EFCC5D /* BaseObject.swift in Sources */,
 				171C289823CEFF5100FA77DC /* InComingEventModelProtocol.swift in Sources */,
 				171C289123CEFF5100FA77DC /* IServiceHandler.swift in Sources */,
 				171C289423CEFF5100FA77DC /* OnSaleEventViewController.swift in Sources */,
 				171C288F23CEFF5100FA77DC /* GetEventListApiRequest.swift in Sources */,
 				171C289623CEFF5100FA77DC /* InComingEventViewController.swift in Sources */,
 				171C289523CEFF5100FA77DC /* OnSaleEventViewModelProtocol.swift in Sources */,
+				176BC30623F6C5D600EFCC5D /* PostEventApiRequest.swift in Sources */,
 				171C288E23CEFF5100FA77DC /* Event.swift in Sources */,
 				171C281A23CEFDDA00FA77DC /* ViewController.swift in Sources */,
 				171C289223CEFF5100FA77DC /* RestClient.swift in Sources */,

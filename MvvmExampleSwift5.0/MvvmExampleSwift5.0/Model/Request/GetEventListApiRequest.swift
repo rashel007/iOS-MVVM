@@ -7,7 +7,8 @@
 //
 
 import Foundation
-public class GetEventListApiRequest: BaseApiRequest {    
+public class GetEventListApiRequest: BaseApiRequest {
+    public var requestBodyObject: BaseObject?
     public var requestMethod: RequestHttpMethod?
     public var requestPath: String = "/sltf6"
 }

@@ -10,9 +10,11 @@ import Alamofire
 
 public protocol BaseApiRequest {
     var requestMethod: RequestHttpMethod?{ get }
+    var requestBodyObject: BaseObject?{ get }
     var requestPath: String {get}
     func request() -> URLRequest
 }
+
 
 extension BaseApiRequest{
     var enviroment: Environment {
@@ -27,6 +29,14 @@ extension BaseApiRequest{
             break
         case .Post:
             request.httpMethod = "POST"
+            if(requestBodyObject != nil){
+                let jsonEncoder = JSONEncoder()
+                do {
+                    request.httpBody = try jsonEncoder.encode(requestBodyObject)
+                } catch  {
+                    print(error)
+                }
+            }
             break
         default:
             request.httpMethod = "GET"
@@ -34,6 +44,7 @@ extension BaseApiRequest{
         }
         return request
     }
+    
     
     var baseUrl: String {
         switch enviroment {
